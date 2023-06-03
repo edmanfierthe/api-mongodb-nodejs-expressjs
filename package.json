@@ -1,0 +1,24 @@
+{
+  "name": "sma",
+  "version": "1.0.0",
+  "description": "School Management Api",
+  "main": "server.js",
+  "scripts": {
+    "start": "node utils/server.js",
+    "server": "nodemon utils/server.js"
+  },
+  "keywords": [
+    "sma",
+    "nodejs"
+  ],
+  "author": "G-Edman Fierthe",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.2.2"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.22"
+  }
+}
