@@ -2,7 +2,7 @@
 
 app: file contain the app file
 config: get all  the configuration logic ex: mongo
-controller: business logic behing the application
+controller: business logic behind the application
 middleware: keep the middleware logic to check for example every user credentials
 model: where the data is going to reside
 utils:  contain utility function
