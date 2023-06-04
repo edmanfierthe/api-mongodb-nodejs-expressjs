@@ -28,9 +28,21 @@
 ### Install bcryptjs to hash the password
 `npm install bcryptjs`
 
+### Install the express handler package 
+`npm i express-async-handler`
+
 ### Design Pattern (MVC)
 It's a way of structuring your project
 M: model (data in Application) model cannot talk to view whereas the model can talk directly to the view
 V: View (User Interface)
 C: controller (Business Logic)
 
+### Express Middleware
+1. Middleware are functions that have access to the request object (req), the response object (res), the functions are used to modify req and res objects before they are passed to the next middleware function
+2. Uses of Middleware: authorization, logging, error handling, rate limiting, data validation ...
+3. whatever we pass in app.use is used as a middleware function.
+
+
+### JWT
+1. Allows you tod= decode, verify and generate JWT
+`npm i jsonwebtoken`
