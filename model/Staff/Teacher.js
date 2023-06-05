@@ -1,3 +1,5 @@
+// Unless the teacher is approved then the others will be required
+
 const mongoose = require("mongoose");
 const teacherSchema = new mongoose.Schema(
   {
@@ -50,7 +52,7 @@ const teacherSchema = new mongoose.Schema(
     subject: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Subject",
-      required: true,
+      //required: true,
     },
     applicationStatus: {
       type: String,
@@ -60,19 +62,19 @@ const teacherSchema = new mongoose.Schema(
 
     program: {
       type: String,
-      ref: "Program",
-      required: true,
+      //ref: "Program",
+      //required: true,
     },
     //A teacher can teach in more than one class level
     classLevel: {
       type: String,
-      ref: "ClassLevel",
-      required: true,
+      //ref: "ClassLevel",
+      //required: true,
     },
     academicYear: {
       type: String,
-      ref: "AcademicYear",
-      required: true,
+      //ref: "AcademicYear",
+      //required: true,
     },
     examsCreated: [
       {
@@ -83,12 +85,12 @@ const teacherSchema = new mongoose.Schema(
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Admin",
-     required: true,
+     //required: true,
     },
     academicTerm: {
       type: String,
-      ref: "AcademicTerm",
-      required: true,
+      //ref: "AcademicTerm",
+      //required: true,
     },
   },
   {

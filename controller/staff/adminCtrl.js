@@ -114,7 +114,7 @@ exports.updateAdminCtrl = AsyncHandler(async(req, res) => {
         })
     }
 
-})
+});
 
 //@desc get all admins
 //@Route GET /api/v1/admins
