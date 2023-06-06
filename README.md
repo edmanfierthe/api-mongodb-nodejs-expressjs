@@ -1,6 +1,9 @@
 ### Need to update the Code when updating the program
 TO DO
 
+### When the admin update the teacher profile
+I think I should make sure that the others fields academicYear, classLevel, and Program are entered as reference too
+
 ### Every Folder
 
 1. app: file contain the app file

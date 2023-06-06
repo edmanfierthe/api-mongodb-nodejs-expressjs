@@ -39,7 +39,7 @@ const studentSchema = new mongoose.Schema(
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "ClassLevel",
-        required: true,
+        //required: true,
       },
     ],
     currentClassLevel: {
@@ -51,7 +51,7 @@ const studentSchema = new mongoose.Schema(
     academicYear: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "AcademicYear",
-      required: true,
+      //required: true,
     },
     dateAdmitted: {
       type: Date,
