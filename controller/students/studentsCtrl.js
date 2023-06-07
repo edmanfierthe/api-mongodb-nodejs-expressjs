@@ -3,6 +3,7 @@ const {hashPassword, isPasswordMatched} = require("../../utils/helpers");
 const AsyncHandler = require("express-async-handler");
 const generateToken = require("../../utils/generatToken");
 const Exam = require("../../model/Academics/Exam");
+const ExamResult = require("../../model/Academics/ExamResults");
 
 //@desc Admin Register Student
 //@Route POST /api/v1/student/admin/register
@@ -155,7 +156,7 @@ exports.adminUpdateStudent = AsyncHandler(async (req, res)=>{
     const {classLevels, academicYear, program, name, email, prefectName} = req.body;
     
     //find the student by id
-    const studentFound = await Student.findById(req.params.studentID);
+    const studentFound = await Student.findById(req.params.studentID).populate('classLevels');
     if(!studentFound){
         throw new Error("Student not found");
     }
@@ -196,7 +197,7 @@ exports.writeExam = AsyncHandler(async (req, res)=>{
         throw new Error("Student not found");
     }
     // get exam
-    const examFound = await Exam.findById(req.params.examID).populate("questions");
+    const examFound = await Exam.findById(req.params.examID).populate("questions").populate("academicTerm");
     if(!examFound){
         throw new Error("Exam not found");
     }
@@ -210,6 +211,12 @@ exports.writeExam = AsyncHandler(async (req, res)=>{
     if(studentAnswers.length !== questions.length){
         throw new Error("Please answer all the questions");
     }
+
+    // //Check if student has already taken the exam
+    // const studentFoundInResults = await ExamResult.findOne({student: studentFound?._id});
+    // if(studentFoundInResults){
+    //     throw new Error("You can't take this exam twice")
+    // }
 
     //Build report object
     let correctAnswer = 0;
@@ -249,9 +256,9 @@ exports.writeExam = AsyncHandler(async (req, res)=>{
 
      //give exam result
      if(grade>=50){
-        status = "Passed";
+        status = "passed";
     } else {
-        status = "Failed";
+        status = "failed";
     } 
 
     //Remarks
@@ -267,8 +274,35 @@ exports.writeExam = AsyncHandler(async (req, res)=>{
         remarks = "Poor"
     }
 
+    //Generate Exam Results
+    // const examResults = await ExamResult.create({
+    //     student: studentFound?._id,
+    //     exam: examFound?._id,
+    //     grade,
+    //     score,
+    //     status,
+    //     remarks, 
+    //     classLevels: examFound?.classLevel,
+    //     academicTerm: examFound?.academicTerm,
+    //     academicYear: examFound?.academicYear,
+    // });
+
+    // //push the results into student
+    // studentFound.examResults.push(examResults?._id);
+    // // save
+    // await studentFound.save();
+
+    //Promoting Student
+    if(examFound.academicTerm.name === "3rd term" && status ==='passed' && studentFound?.currentClassLevel ==="Level 100"){
+        //promote student to level 200
+        studentFound.classLevels.push("Level 200");
+        studentFound.currentClassLevel = "Level 200";
+        await studentFound.save();
+    }
+
     res.status(200).json({
         status: 'success',
-        correctAnswer, wrongAnswers, score, grade, status, answeredQuestion, remarks
+        correctAnswer, wrongAnswers, score, grade, status, answeredQuestion, remarks, 
+        //examResults
     })
 });
