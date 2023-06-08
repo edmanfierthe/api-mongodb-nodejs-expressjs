@@ -7,10 +7,7 @@
     }
   ],
   "routes": [
-    {
-      "src": "/api/.*",
-      "dest": "utils/server.js"
-    }
+    { "src": "/(.*)", "dest": "server.js" }
   ],
   "frameworks": {
     "node": {
