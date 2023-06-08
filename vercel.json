@@ -1,16 +1,21 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "utils/server.js",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/api/.*",
-        "dest": "utils/server.js"
-      }
-    ]
+  "version": 2,
+  "builds": [
+    {
+      "src": "utils/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/.*",
+      "dest": "utils/server.js"
+    }
+  ],
+  "frameworks": {
+    "node": {
+      "buildCommand": "npm install",
+      "rootDirectory": "utils"
+    }
   }
-  
+}
