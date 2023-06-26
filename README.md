@@ -42,17 +42,17 @@ Define the required environment variables in the .env file, such as the MongoDB 
 ## API Endpoints
 The API exposes the following endpoints:
 
-/api/v1/admins/
-/api/v1/academic-years
-/api/v1/academic-terms
-/api/v1/class-levels
-/api/v1/programs
-/api/v1/subjects
-/api/v1/year-groups
-/api/v1/teachers
-/api/v1/exams
-/api/v1/students
-/api/v1/questions
+- /api/v1/admins/
+- /api/v1/academic-years
+- /api/v1/academic-terms
+- /api/v1/class-levels
+- /api/v1/programs
+- /api/v1/subjects
+- /api/v1/year-groups
+- /api/v1/teachers
+- /api/v1/exams
+- /api/v1/students
+- /api/v1/questions
 
 Please refer the routes directory to see the different methods for every endpoint
 
