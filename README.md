@@ -1,54 +1,63 @@
-### Need to update the Code when updating the program
-TO DO
+# School Management System API
 
-### When the admin update the teacher profile
-I think I should make sure that the others fields academicYear, classLevel, and Program are entered as reference too
+The School Management System API is a backend application built with (MongoDB, Express, Node.js) that allows admins, teachers, and students to manage various aspects of a school system. The API provides endpoints for registration, profile management, course viewing, exam creation, and result publication.
 
-### Every Folder
+## Features
 
-1. app: file contain the app file
-2. config: get all  the configuration logic ex: mongo connect 
-3. controller: business logic behind the application
-4. middleware: keep the middleware logic to check for example every user credentials
-5. model: where the data is going to reside
-6. utils:  contain utility function
-7. server.js: will run the server that's it
+- User Registration: Admins can register new users, including teachers and students, by providing the necessary information.
+- User Management: Admins can delete teachers, manage their profiles, and change student profiles.
+- Course Viewing: Students can view their assigned courses and class information.
+- Profile Management: Students and teachers can update their profiles, including personal details and contact information.
+- Exam Creation: Teachers can create exams by specifying the exam details and associated subjects.
+- Result Publication: Admins can publish exam results for students to view.
 
+## Technologies Used
 
-### Initialize the project
+- MongoDB: A NoSQL database used for storing user, course, and exam data.
+- Express: A web application framework for Node.js used for handling API requests and routing.
+- Node.js: A JavaScript runtime used for server-side development.
+- JWT    : to implement a secure authentication mechanism and role-based access control to protect sensitive endpoints and restrict access based on user roles.
 
-`npm init --yes`
-### Then install the packages to use
+## Installation
 
-`npm install express mongoose`
+1. Clone the repository:
 
-### Install the Dev dependencies
-`npm i nodemon morgan -D`
+   `git clone https://github.com/edmanfierthe/api-mongodb-nodejs-expressjs.git`
 
-### Install dotenv to manage the env for the project
-`npm i dotenv`
+2. Install Dependencies
 
-1. nodemon: will help restart the server anytime we make change
-2. morgan: the logger that is endpoint that we make the request to
+    `cd api-mongodb-nodejs-expressjs`
+    `npm install`
 
-### Install bcryptjs to hash the password
-`npm install bcryptjs`
+3. Set up the environment variables:
 
-### Install the express handler package 
-`npm i express-async-handler`
+Create a .env file in the root directory of the project.
+Define the required environment variables in the .env file, such as the MongoDB connection URL and any other necessary configuration.
 
-### Design Pattern (MVC)
-It's a way of structuring your project
-M: model (data in Application) model cannot talk to view whereas the model can talk directly to the view
-V: View (User Interface)
-C: controller (Business Logic)
+4. Start the server
 
-### Express Middleware
-1. Middleware are functions that have access to the request object (req), the response object (res), the functions are used to modify req and res objects before they are passed to the next middleware function
-2. Uses of Middleware: authorization, logging, error handling, rate limiting, data validation ...
-3. whatever we pass in app.use is used as a middleware function.
+    `node server.js`
+    The API will start running on http://localhost:2020 by default.
 
+## API Endpoints
+The API exposes the following endpoints:
 
-### JWT
-1. Allows you tod= decode, verify and generate JWT
-`npm i jsonwebtoken`
+/api/v1/admins/
+/api/v1/academic-years
+/api/v1/academic-terms
+/api/v1/class-levels
+/api/v1/programs
+/api/v1/subjects
+/api/v1/year-groups
+/api/v1/teachers
+/api/v1/exams
+/api/v1/students
+/api/v1/questions
+
+Please refer the routes directory to see the different methods for every endpoint
+
+## Future Enhancements
+Here are some potential future enhancements for the School Management System API:
+
+User Dashboard: Create a frontend application to provide a user-friendly interface for admins, teachers, and students to interact with the API.
+Additional Features: Add more features such as attendance management, course enrollment, grade calculations, and messaging functionality.

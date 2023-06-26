@@ -22,6 +22,10 @@ const app = express();
 //app.use(morgan("dev"));
 app.use(express.json()); // pass incoming json data
 
+// Welcome message route
+app.get("/", (req, res) => {
+    res.send("Welcome to the School Management API!");
+  });
 
 //Routes
 app.use("/api/v1/admins", adminRouter);
